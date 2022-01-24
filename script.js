@@ -1,17 +1,15 @@
-const h2 = document.createElement("h2");
-h2.textContent = "This content added by JavaScript";
-
 fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151")
     .then(response => response.json())
-    .then(data => console.log(data.results))
+    .then(data => showPokemonInSearchList(data.results))
 
 function keyUpFilter() {
     // Declare variables
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById('myInput');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName('li');
+    const input = document.getElementById('myInput');
+    const filter = input.value.toUpperCase();
+    const ul = document.getElementById("searchUL");
+    const li = ul.getElementsByTagName('li');
+    
+    let a, i, txtValue;
     
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
@@ -25,3 +23,17 @@ function keyUpFilter() {
     }
 }
       
+const searchUL = document.getElementById("searchUL");
+
+function showPokemonInSearchList(pokemonArray) {
+    pokemonArray.forEach(pokemonObj => {
+        const li = document.createElement("li");
+        const anchor = document.createElement('a');
+        anchor.href = pokemonObj.url;
+        anchor.innerText = pokemonObj.name;
+
+        li.appendChild(anchor);
+        // console.log(li);
+        searchUL.appendChild(li);
+    })
+}
