@@ -22,18 +22,55 @@ function keyUpFilter() {
         }
     }
 }
-      
-const searchUL = document.getElementById("searchUL");
 
+// Create a List with all 151 Pokemon that can be Filtered/Searched
 function showPokemonInSearchList(pokemonArray) {
     pokemonArray.forEach(pokemonObj => {
+        const searchUL = document.getElementById("searchUL");
         const li = document.createElement("li");
-        const anchor = document.createElement('a');
-        anchor.href = pokemonObj.url;
-        anchor.innerText = pokemonObj.name;
 
-        li.appendChild(anchor);
-        // console.log(li);
+        const pokemonName = capitalizeFirstLetter(pokemonObj.name);
+        li.textContent = pokemonName;
+        
         searchUL.appendChild(li);
+
+        li.addEventListener("click", () => {
+            // console.log(pokemonName)
+            fetch(pokemonObj.url)
+            .then(response => response.json())
+            .then(data => populateCard(data))
+            .catch(error => console.error(error))
+        })
     })
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }  
+
+function populateCard(pokemonDataObj) {
+    const pokemonCardName = document.querySelector("#pokemonCardName");
+    pokemonCardName.textContent = capitalizeFirstLetter(pokemonDataObj.name);
+
+    const pokemonCardImage = document.querySelector("#pokemonCardImage");
+    pokemonCardImage.src = pokemonDataObj.sprites.other["official-artwork"].front_default
+
+    const pokemonCardType = document.querySelector("#pokemonCardType");
+    pokemonCardType.textContent = pokemonDataObj["types"][0]["type"]["name"].toUpperCase();
+
+    const pokemonCardDescription = document.querySelector("#pokemonCardDescription");
+
+    fetch(pokemonDataObj.species.url)
+    .then(response => response.json())
+    .then(data => {
+        pokemonCardDescription.textContent = getFlavorText(data)
+    })
+    .catch(error => console.error(error))    
+}
+
+function getFlavorText(speciesDataObj) {
+    const allFlavorTextEntries = speciesDataObj["flavor_text_entries"];
+    const englishFlavorTextObject = allFlavorTextEntries.find(entry => entry.language.name === "en");
+    
+    return englishFlavorTextObject.flavor_text;
 }
