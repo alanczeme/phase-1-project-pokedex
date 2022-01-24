@@ -28,10 +28,13 @@ function showPokemonInSearchList(pokemonArray) {
     pokemonArray.forEach(pokemonObj => {
         const searchUL = document.getElementById("searchUL");
         const li = document.createElement("li");
+        const anchor = document.createElement("a");
 
         const pokemonName = capitalizeFirstLetter(pokemonObj.name);
-        li.textContent = pokemonName;
+        anchor.innerText = pokemonName;
+        // li.textContent = pokemonName;
         
+        li.appendChild(anchor);
         searchUL.appendChild(li);
 
         li.addEventListener("click", () => {
