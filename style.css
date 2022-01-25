@@ -2,6 +2,8 @@ body {
   background-image: url("https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/forest.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    margin:0;
+    padding:0;
   }
 
 nav ul{height:800px; width:245px;}
@@ -41,6 +43,18 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 
+#randomBtn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+
 
 .main-container {
   position: relative;
@@ -67,14 +81,22 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
 
 .front {
   position: absolute;
-  width: 50%;
-  height: 100%;
+  width: 500px;
+  height: 600px;
   backface-visibility: hidden;
   background: yellow;
   color: black;
   text-align: center;
 
 }
+
+.center {
+  position: absolute;
+  left: 45%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  }
 
 .back {
 
@@ -141,3 +163,6 @@ img {
 #film-info {
   padding-bottom: 15px;
 }
+
+
+
