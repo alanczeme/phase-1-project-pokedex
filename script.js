@@ -68,7 +68,25 @@ function populateCard(pokemonDataObj) {
     .then(data => {
         pokemonCardDescription.textContent = getFlavorText(data)
     })
-    .catch(error => console.error(error))    
+    .catch(error => console.error(error))   
+    
+    
+    // Add Event Listener to "Add To My Team!" button. On click:
+    // Update the Cell in "My Team" table with pokemon name and image
+
+    const catchButton = document.getElementById("catch-button");
+    const myTeamTable = document.getElementById("my-team-table");
+    catchButton.addEventListener("click", () => {
+
+        const tr = document.createElement("tr");
+        const col1 = document.createElement("td");
+        const col2 = document.createElement("td");
+        const col3 = document.createElement("td");
+
+        myTeamTable.appendChild(tr).append(col1, col2, col3);
+
+        console.log(tr, col1, col2, col3);
+    })
 }
 
 function getFlavorText(speciesDataObj) {

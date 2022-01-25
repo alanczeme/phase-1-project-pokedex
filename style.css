@@ -76,7 +76,6 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
   height: 100%;
   transform-style: preserve-3d;
   transition: all 0.8s ease;
-
 }
 
 .front {
@@ -87,13 +86,13 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
   background: yellow;
   color: black;
   text-align: center;
-
+  border-radius: 5%
 }
 
 .center {
   position: absolute;
   left: 45%;
-  top: 60%;
+  top: 70%;
   transform: translate(-50%, -50%);
   padding: 10px;
   }
@@ -115,20 +114,9 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
 .heading {
   background-color: #333333;
   margin-bottom: 10px;
-  padding: 5px 0px 5px 15px;
+  padding: 1em;
 }
 
-.title {
-  background-color: #333333;
-  padding: 5px;
-  color: white;
-}
-
-#runtime {
-  background-color: #333333;
-  color: #3e8fde;
-  padding: 0px 0px 5px 5px;
-}
 
 .content {
   color: #3e8fde;
@@ -136,33 +124,30 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
 
 #subtitle {
   color: white;
-  margin-left: 55px;
-}
-
-#showing {
-  margin-left: 20px;
-}
-
-#films li::before {
-  content: "";
-}
-
-.film {
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.sold-out {
-  color: lightgray;
-}
-
-img {
-  max-width: 25vw;
-}
-
-#film-info {
-  padding-bottom: 15px;
+  /* margin-left: 55px; */
 }
 
 
+
+.team-table {
+  /* position: absolute; */
+  /* transform: translate(-25%, -25%); */
+  /* top: 100% ; */
+  /* margin-left: 80% ; */
+  /* padding-right: 15px; */
+  /* border-collapse: collapse; */
+  /* table-layout: auto; */
+  /* width: 30%;   */
+  /* display: inline; */
+
+  border: 1px solid black;
+  position: absolute;
+  left: 85%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: white;
+  border-radius: 5%
+
+}
 
