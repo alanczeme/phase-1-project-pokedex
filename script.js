@@ -85,6 +85,17 @@ function populateCard(pokemonDataObj) {
     catchButton.innerHTML = "Catch 'em!"
     buttonDiv.appendChild(catchButton);
 
+    const catchWarningText = "Your Team is full! Release 1 or more Pokemon to catch new ones.";
+    const catchWarning = document.createElement("div");
+    catchWarning.id = "catch-warning";
+    catchWarning.innerHTML = catchWarningText;
+
+    const numberOfRows = myTeamTable.getElementsByTagName("tr").length;
+    if(numberOfRows >= 6) {
+        catchButton.disabled = true;
+        buttonDiv.appendChild(catchWarning);
+    }
+
     catchButton.addEventListener("click", () => {
         const tr = document.createElement("tr");
 
@@ -102,16 +113,24 @@ function populateCard(pokemonDataObj) {
         const releaseButton = document.createElement("button");
         releaseButton.innerHTML = "RELEASE";
         col3.appendChild(releaseButton);
-
+  
+        const catchWarning = document.createElement("div");
+        catchWarning.id = "catch-warning";
+        catchWarning.innerHTML = catchWarningText;
+            
         const numberOfRows = myTeamTable.getElementsByTagName("tr").length    
-        if(numberOfRows < 6) {
+        if(numberOfRows < 5) {
             myTeamTable.appendChild(tr).append(col1, col2, col3);
+        } else if (numberOfRows === 5) {
+            myTeamTable.appendChild(tr).append(col1, col2, col3);
+            catchButton.disabled = true;
+            buttonDiv.appendChild(catchWarning);
         } else {
-            // catchButton.disabled = true;
-            alert("Your Team can only have up to 6 Pokemon. Please release 1 or more Pokemon, then try again.");
+            catchButton.disabled = true;
+            buttonDiv.appendChild(catchWarning);
         }
 
-        // releaseButton.addEventListener("click", () => {})
+        releaseButton.addEventListener("click", () => {})
     })
 }
 
