@@ -56,7 +56,8 @@ function populateCard(pokemonDataObj) {
     pokemonCardName.textContent = capitalizeFirstLetter(pokemonDataObj.name);
 
     const pokemonCardImage = document.querySelector("#pokemonCardImage");
-    pokemonCardImage.src = pokemonDataObj.sprites.other["official-artwork"].front_default
+    const pokemonOfficialArtwork = pokemonDataObj.sprites.other["official-artwork"].front_default;
+    pokemonCardImage.src = pokemonOfficialArtwork;
 
     const pokemonCardType = document.querySelector("#pokemonCardType");
     pokemonCardType.textContent = pokemonDataObj["types"][0]["type"]["name"].toUpperCase();
@@ -69,23 +70,48 @@ function populateCard(pokemonDataObj) {
         pokemonCardDescription.textContent = getFlavorText(data)
     })
     .catch(error => console.error(error))   
-    
-    
+
+
+    // Create "Add To My Team!" button ("Catch")
     // Add Event Listener to "Add To My Team!" button. On click:
     // Update the Cell in "My Team" table with pokemon name and image
 
-    const catchButton = document.getElementById("catch-button");
     const myTeamTable = document.getElementById("my-team-table");
+
+    const buttonDiv = document.getElementById("pokemon-button-div");
+    buttonDiv.innerHTML = "";
+
+    const catchButton = document.createElement("button");
+    catchButton.innerHTML = "Catch 'em!"
+    buttonDiv.appendChild(catchButton);
+
     catchButton.addEventListener("click", () => {
-
         const tr = document.createElement("tr");
+
         const col1 = document.createElement("td");
+        const tableImage = document.createElement("img");
+        tableImage.src = pokemonOfficialArtwork;
+        tableImage.height = 30;
+        tableImage.width = 30;
+        col1.appendChild(tableImage);
+    
         const col2 = document.createElement("td");
+        col2.innerHTML = capitalizeFirstLetter(pokemonDataObj.name);
+    
         const col3 = document.createElement("td");
+        const releaseButton = document.createElement("button");
+        releaseButton.innerHTML = "RELEASE";
+        col3.appendChild(releaseButton);
 
-        myTeamTable.appendChild(tr).append(col1, col2, col3);
+        const numberOfRows = myTeamTable.getElementsByTagName("tr").length    
+        if(numberOfRows < 6) {
+            myTeamTable.appendChild(tr).append(col1, col2, col3);
+        } else {
+            // catchButton.disabled = true;
+            alert("Your Team can only have up to 6 Pokemon. Please release 1 or more Pokemon, then try again.");
+        }
 
-        console.log(tr, col1, col2, col3);
+        // releaseButton.addEventListener("click", () => {})
     })
 }
 

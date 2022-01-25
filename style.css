@@ -127,6 +127,9 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
   /* margin-left: 55px; */
 }
 
+#pokemon-card {
+  margin-left: 20px;
+}
 
 
 .team-table {
