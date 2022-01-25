@@ -83,6 +83,7 @@ function populateCard(pokemonDataObj) {
 
     const catchButton = document.createElement("button");
     catchButton.innerHTML = "Catch 'em!"
+    catchButton.id = "catch-button";
     buttonDiv.appendChild(catchButton);
 
     const catchWarningText = "Your Team is full! Release 1 or more Pokemon to catch new ones.";
@@ -130,7 +131,17 @@ function populateCard(pokemonDataObj) {
             buttonDiv.appendChild(catchWarning);
         }
 
-        releaseButton.addEventListener("click", () => {})
+        releaseButton.addEventListener("click", () => {
+            tr.remove();
+            const catchWarningOnPage = document.getElementById("catch-warning");
+            const catchButtonOnPage = document.getElementById("catch-button");
+
+            let numberOfRows = myTeamTable.getElementsByTagName("tr").length;
+            if(numberOfRows < 6) {
+                catchButtonOnPage.disabled = false;
+                catchWarningOnPage.remove();
+            }
+        })
     })
 }
 
