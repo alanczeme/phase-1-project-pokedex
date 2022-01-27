@@ -60,8 +60,15 @@ function populateCard(pokemonDataObj) {
     pokemonCardImage.src = pokemonOfficialArtwork;
 
     const pokemonCardType = document.querySelector("#pokemonCardType");
-    pokemonCardType.textContent = pokemonDataObj["types"][0]["type"]["name"].toUpperCase();
 
+    if (pokemonDataObj["types"][1] === undefined) {
+        pokemonCardType.textContent = pokemonDataObj["types"][0]["type"]["name"].toUpperCase();
+    } else {
+     const type1 = pokemonDataObj["types"][0]["type"]["name"].toUpperCase();
+     const type2 = pokemonDataObj["types"][1]["type"]["name"].toUpperCase();
+     pokemonCardType.textContent = `${type1}, ${type2}`;
+    }
+    
     const pokemonCardDescription = document.querySelector("#pokemonCardDescription");
 
     fetch(pokemonDataObj.species.url)
