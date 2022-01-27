@@ -28,6 +28,7 @@ function showPokemonInSearchList(pokemonArray) {
     pokemonArray.forEach(pokemonObj => {
         const searchUL = document.getElementById("searchUL");
         const li = document.createElement("li");
+        li.style="cursor: pointer;";
         const anchor = document.createElement("a");
 
         const pokemonName = capitalizeFirstLetter(pokemonObj.name);
@@ -54,6 +55,7 @@ function capitalizeFirstLetter(string) {
 function populateCard(pokemonDataObj) {
     const pokemonCardName = document.querySelector("#pokemonCardName");
     pokemonCardName.textContent = capitalizeFirstLetter(pokemonDataObj.name);
+    pokemonCardName.style.fontSize = "20px";
 
     const pokemonCardImage = document.querySelector("#pokemonCardImage");
     const pokemonOfficialArtwork = pokemonDataObj.sprites.other["official-artwork"].front_default;
@@ -91,6 +93,7 @@ function populateCard(pokemonDataObj) {
     const catchButton = document.createElement("button");
     catchButton.innerHTML = "Catch 'em!"
     catchButton.id = "catch-button";
+    catchButton.style="cursor: pointer;";
     buttonDiv.appendChild(catchButton);
 
     const catchWarningText = "Your Team is full! Release 1 or more Pokemon to catch new ones.";
@@ -101,6 +104,7 @@ function populateCard(pokemonDataObj) {
     const numberOfRows = myTeamTable.getElementsByTagName("tr").length;
     if(numberOfRows >= 6) {
         catchButton.disabled = true;
+        catchButton.style="cursor: default;";
         buttonDiv.appendChild(catchWarning);
     }
 
@@ -120,6 +124,7 @@ function populateCard(pokemonDataObj) {
         const col3 = document.createElement("td");
         const releaseButton = document.createElement("button");
         releaseButton.innerHTML = "RELEASE";
+        releaseButton.style="cursor: pointer;";
         col3.appendChild(releaseButton);
   
         const catchWarning = document.createElement("div");
@@ -132,9 +137,11 @@ function populateCard(pokemonDataObj) {
         } else if (numberOfRows === 5) {
             myTeamTable.appendChild(tr).append(col1, col2, col3);
             catchButton.disabled = true;
+            catchButton.style="cursor: default;";
             buttonDiv.appendChild(catchWarning);
         } else {
             catchButton.disabled = true;
+            catchButton.style="cursor: default;";
             buttonDiv.appendChild(catchWarning);
         }
 
