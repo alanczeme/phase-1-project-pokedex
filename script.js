@@ -153,6 +153,7 @@ function populateCard(pokemonDataObj) {
             let numberOfRows = myTeamTable.getElementsByTagName("tr").length;
             if(numberOfRows < 6) {
                 catchButtonOnPage.disabled = false;
+                catchButtonOnPage.style="cursor: pointer;";
                 catchWarningOnPage.remove();
             }
         })
