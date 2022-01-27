@@ -14,11 +14,11 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
   background-image: url('/css/searchicon.png'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
+  width: 183px;
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
+  /* margin-bottom: 12px; Add some space below the input */
 }
 
 #searchUL {
@@ -92,8 +92,8 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
 
 .center {
   position: absolute;
-  left: 58%;
-  top: 80%;
+  left: 45%;
+  top: 55%;
   transform: translate(-50%, -50%);
   padding: 10px;
   }
@@ -101,7 +101,6 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
 
 .heading {
   background-color: #333333;
-  margin-bottom: 10px;
   padding: 1em;
 }
 
@@ -109,8 +108,10 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
   color:black;
   background-color: white;
   width:160px;
-  position: center;
   border-radius: 5%;
+  margin: 0 auto;
+  font-size: xx-large;
+  font-weight: bold;
 }
 
 .content {
@@ -119,8 +120,15 @@ nav ul{background-color: white; font-size: 30px; font-weight: bold}
   border-radius: 5%;
 }
 
-#title {
-  font-weight: bold;
+#catch-warning {
+  color: black;
+  background-color: white;
+  border-radius: 5%;
+}
+
+#catch-button {
+  font-size:x-large;
+  margin: 10px;
 }
 
 #subtitle {

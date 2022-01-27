@@ -55,7 +55,6 @@ function capitalizeFirstLetter(string) {
 function populateCard(pokemonDataObj) {
     const pokemonCardName = document.querySelector("#pokemonCardName");
     pokemonCardName.textContent = capitalizeFirstLetter(pokemonDataObj.name);
-    pokemonCardName.style.fontSize = "20px";
 
     const pokemonCardImage = document.querySelector("#pokemonCardImage");
     const pokemonOfficialArtwork = pokemonDataObj.sprites.other["official-artwork"].front_default;
