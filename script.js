@@ -137,11 +137,11 @@ function populateCard(pokemonDataObj) {
         } else if (numberOfRows === 5) {
             myTeamTable.appendChild(tr).append(col1, col2, col3);
             catchButton.disabled = true;
-            catchButton.style="cursor: default;";
+            catchButton.style="cursor: not-allowed;";
             buttonDiv.appendChild(catchWarning);
         } else {
             catchButton.disabled = true;
-            catchButton.style="cursor: default;";
+            catchButton.style="cursor: not-allowed;";
             buttonDiv.appendChild(catchWarning);
         }
 
