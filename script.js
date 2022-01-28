@@ -69,7 +69,8 @@ function populateCard(pokemonDataObj) {
      const type2 = pokemonDataObj["types"][1]["type"]["name"].toUpperCase();
      pokemonCardType.textContent = `${type1}, ${type2}`;
     }
-    
+    getBackgroundImage(pokemonDataObj["types"][0]["type"]["name"]);
+
     const pokemonCardDescription = document.querySelector("#pokemonCardDescription");
 
     fetch(pokemonDataObj.species.url)
@@ -164,4 +165,45 @@ function getFlavorText(speciesDataObj) {
     const englishFlavorTextObject = allFlavorTextEntries.find(entry => entry.language.name === "en");
     
     return englishFlavorTextObject.flavor_text;
+}
+
+const background_images = {
+    city: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/city.jpg",
+    arena: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/arena.jpg",
+    forest: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/forest.jpg",
+    canyon: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/canyon.jpg",
+    cave: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/cave.jpg",
+    coast: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/coast.jpg",
+    glacier: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/glacier.jpg",
+    volcano: "https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/volcano.jpg"
+}
+
+const background_type_mapping = {
+    electric: "city",
+    poison: "city",
+    steel: "city",
+    fighting: "arena",
+    normal: "arena",
+    bug: "forest",
+    fairy: "forest",
+    grass: "forest",
+    rock: "canyon",
+    ground: "canyon",
+    flying: "canyon",
+    dark: "cave",
+    ghost: "cave",
+    psychic: "cave",
+    water: "coast",
+    ice: "glacier",
+    fire: "volcano",
+    dragon: "volcano"
+}
+
+function getBackgroundImage(type) {
+    const backgroundEnvironment = background_type_mapping[type];
+    const backgroundImage = background_images[backgroundEnvironment];
+
+    const body = document.getElementsByTagName('body')[0];
+    document.body.style.backgroundImage = `url(${backgroundImage})`;
+
 }
